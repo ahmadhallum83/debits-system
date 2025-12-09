@@ -19,7 +19,7 @@ const CustomerCard = ({ customer, onTransactionClick, onCustomerUpdated }) => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [editName, setEditName] = useState(customer.name);
   const [editPhone, setEditPhone] = useState(customer.phone || "");
-  const [sortOrder, setSortOrder] = useState("desc"); // 'asc' or 'desc'
+  const [sortOrder, setSortOrder] = useState("asc"); // 'asc' or 'desc'
 
   // SMS states
   const [showSMSModal, setShowSMSModal] = useState(false);
