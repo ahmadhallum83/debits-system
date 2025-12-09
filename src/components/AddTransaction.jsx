@@ -129,32 +129,35 @@ const AddTransaction = ({
       currentBalance,
     } = transData;
 
+    // Determine balance label based on currentBalance
+    let balanceLabel = "";
+    if (currentBalance > 0) {
+      balanceLabel = "دين";
+    } else if (currentBalance < 0) {
+      balanceLabel = "رصيد";
+    }
+
     let message;
     if (type === "debt") {
       if (transactionType === "cash") {
         message =
           `مرحبا ${customerName}\n` +
-          `شراء كاش: ${formatCurrency(amount)}\n` +
-          `التفاصيل: ${description}\n` +
-          `الرصيد الحالي: ${formatCurrency(Math.abs(currentBalance))} ${
-            currentBalance >= 0 ? "دين" : "رصيد"
-          }` + `\nالعملة:شيكل`;
+          `شراء ${description} بقيمة ${formatCurrency(amount)} كاش\n` +
+          `رصيدك لدينا ${formatCurrency(Math.abs(currentBalance))} ${balanceLabel}` +
+          `\nالعملة:شيكل`;
       } else {
         message =
           `مرحبا ${customerName}\n` +
-          `دين جديد: ${formatCurrency(amount)}\n` +
-          `التفاصيل: ${description}\n` +
-          `الرصيد الحالي: ${formatCurrency(Math.abs(currentBalance))} ${
-            currentBalance >= 0 ? "دين" : "رصيد"
-          }` + `\nالعملة:شيكل`;
+          `شراء ${description} بقيمة ${formatCurrency(amount)} دين\n` +
+          `رصيدك لدينا ${formatCurrency(Math.abs(currentBalance))} ${balanceLabel}` +
+          `\nالعملة:شيكل`;
       }
     } else {
       message =
         `مرحبا ${customerName}\n` +
-        `تم تسديد: ${formatCurrency(amount)}\n` +
-        `الرصيد الحالي: ${formatCurrency(Math.abs(currentBalance))} ${
-            currentBalance >= 0 ? "دين" : "رصيد"
-          }` + `\nالعملة:شيكل`;
+        `تم رصد دفعة بقيمة ${formatCurrency(amount)}\n` +
+        `رصيدك لدينا ${formatCurrency(Math.abs(currentBalance))} ${balanceLabel}` +
+        `\nالعملة:شيكل`;
     }
 
     return message;
@@ -487,7 +490,7 @@ const AddTransaction = ({
                   }}
                 >
                   {transactionType === "cash"
-                    ? "الدفعات الكاش لا تُحسب في توتال الحسابات"
+                    ? "الدفعات الكاش لا تُحسب في مجموع الحسابات النهائي"
                     : "الديون تُضاف لحساب الزبون"}
                 </small>
               </div>
