@@ -133,27 +133,28 @@ const AddTransaction = ({
     if (type === "debt") {
       if (transactionType === "cash") {
         message =
-          `مرحبا ${customerName}،\n` +
-          `تم تسجيل عملية شراء كاش بقيمة ${formatCurrency(amount)} شيكل\n` +
+          `مرحبا ${customerName}\n` +
+          `شراء كاش: ${formatCurrency(amount)}\n` +
           `التفاصيل: ${description}\n` +
-          `رصيدك الحالي: ${formatCurrency(Math.abs(currentBalance))} شيكل ${
+          `الرصيد الحالي: ${formatCurrency(Math.abs(currentBalance))} ${
             currentBalance >= 0 ? "دين" : "رصيد"
-          }`;
+          }` + `\nالعملة:شيكل`;
       } else {
         message =
-          `مرحبا ${customerName}،\n` +
-          `تم تسجيل دين جديد بقيمة ${formatCurrency(amount)} شيكل\n` +
+          `مرحبا ${customerName}\n` +
+          `دين جديد: ${formatCurrency(amount)}\n` +
           `التفاصيل: ${description}\n` +
-          `رصيدك الحالي: ${formatCurrency(Math.abs(currentBalance))} شيكل دين`;
+          `الرصيد الحالي: ${formatCurrency(Math.abs(currentBalance))} ${
+            currentBalance >= 0 ? "دين" : "رصيد"
+          }` + `\nالعملة:شيكل`;
       }
     } else {
       message =
-        `مرحبا ${customerName}،\n` +
-        `تم استلام دفعة بقيمة ${formatCurrency(amount)} شيكل\n` +
-        `شكرا لك!\n` +
-        `رصيدك الحالي: ${formatCurrency(Math.abs(currentBalance))} شيكل ${
-          currentBalance >= 0 ? "دين" : "رصيد"
-        }`;
+        `مرحبا ${customerName}\n` +
+        `تم تسديد: ${formatCurrency(amount)}\n` +
+        `الرصيد الحالي: ${formatCurrency(Math.abs(currentBalance))} ${
+            currentBalance >= 0 ? "دين" : "رصيد"
+          }` + `\nالعملة:شيكل`;
     }
 
     return message;
