@@ -160,7 +160,7 @@ const CustomerCard = ({ customer, onTransactionClick, onCustomerUpdated }) => {
 
     const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-    return `التاريخ: ${day}/${month}/${year} والساعة ${hours}:${formattedMinutes} ${ampm}`;
+    return `التاريخ: ${year}/${month}/${day} , الساعة ${hours}:${formattedMinutes} ${ampm}`;
   };
 
   const formatCurrency = (amount) => {
@@ -376,7 +376,7 @@ const CustomerCard = ({ customer, onTransactionClick, onCustomerUpdated }) => {
                               <span
                                 className={`badge ${
                                   transaction.transactionType === "cash"
-                                    ? "badge-success"
+                                    ? "badge-primary"
                                     : "badge-danger"
                                 }`}
                               >
@@ -387,8 +387,8 @@ const CustomerCard = ({ customer, onTransactionClick, onCustomerUpdated }) => {
                               <span
                                 className={
                                   transaction.transactionType === "cash"
-                                    ? "text-success"
-                                    : "text-primary"
+                                    ? "text-primary"
+                                    : "text-danger"
                                 }
                               >
                                 {transaction.description}
@@ -417,7 +417,7 @@ const CustomerCard = ({ customer, onTransactionClick, onCustomerUpdated }) => {
                             transaction.type === "payment"
                               ? "text-success"
                               : transaction.transactionType === "cash"
-                              ? "text-success"
+                              ? "text-primary"
                               : "text-danger"
                           }`}
                         >

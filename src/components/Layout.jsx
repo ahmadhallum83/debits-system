@@ -35,7 +35,7 @@ const Layout = ({ children }) => {
     <>
       <nav className="navbar">
         <div className="navbar-content">
-          <div className="navbar-brand">نظام إدارة الديون</div>
+          <div className="navbar-brand">نظام إدارة الديون-TOTAL WIRELESS</div>
           <div className="flex items-center gap-md">
             <button
               onClick={() => navigate("/")}

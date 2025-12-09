@@ -81,12 +81,26 @@ const SMSConfirmation = ({
                 lineHeight: "1.6",
               }}
             />
-            <small
-              className="text-muted"
-              style={{ display: "block", marginTop: "var(--spacing-sm)" }}
-            >
-              عدد الأحرف: {editedMessage.length}
-            </small>
+            <div style={{ display: "flex", gap: "var(--spacing-md)", marginTop: "var(--spacing-sm)" }}>
+              <small
+                className="text-muted"
+                style={{ flex: 1 }}
+              >
+                عدد الأحرف: {editedMessage.length}
+              </small>
+              {editedMessage.length > 70 && (
+                <small
+                  style={{
+                    color: "#dc3545",
+                    fontWeight: "600",
+                    flex: 1,
+                    textAlign: "right",
+                  }}
+                >
+                  ⚠️ لقد تجاوزت 70 حرف، سيتم استهلاك أكثر من رسالة واحدة
+                </small>
+              )}
+            </div>
           </div>
         </div>
 
