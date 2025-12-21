@@ -132,32 +132,28 @@ const AddTransaction = ({
     // Determine balance label based on currentBalance
     let balanceLabel = "";
     if (currentBalance > 0) {
-      balanceLabel = "دين";
+      // balanceLabel = "دين";
+      balanceLabel = "";
     } else if (currentBalance < 0) {
       balanceLabel = "رصيد";
+      // balanceLabel = "";
     }
 
     let message;
     if (type === "debt") {
       if (transactionType === "cash") {
         message =
-          `مرحبا ${customerName}\n` +
-          `شراء ${description} بقيمة ${formatCurrency(amount)} كاش\n` +
-          `رصيدك لدينا ${formatCurrency(Math.abs(currentBalance))} ${balanceLabel}` +
-          `\nالعملة:شيكل`;
+          `حركة مشتريات بقيمة ${formatCurrency(amount)} شيكل كاش\n` +
+          `مجموع حسابكم ${formatCurrency(Math.abs(currentBalance))} شيكل ${balanceLabel}`;
       } else {
         message =
-          `مرحبا ${customerName}\n` +
-          `شراء ${description} بقيمة ${formatCurrency(amount)} دين\n` +
-          `رصيدك لدينا ${formatCurrency(Math.abs(currentBalance))} ${balanceLabel}` +
-          `\nالعملة:شيكل`;
+          `حركة مشتريات بقيمة ${formatCurrency(amount)} شيكل\n` +
+          `مجموع حسابكم ${formatCurrency(Math.abs(currentBalance))} شيكل ${balanceLabel}`;
       }
     } else {
       message =
-        `مرحبا ${customerName}\n` +
-        `تم رصد دفعة بقيمة ${formatCurrency(amount)}\n` +
-        `رصيدك لدينا ${formatCurrency(Math.abs(currentBalance))} ${balanceLabel}` +
-        `\nالعملة:شيكل`;
+        `دفعة نقدية بقيمة ${formatCurrency(amount)} شيكل\n` +
+        `مجموع حسابكم ${formatCurrency(Math.abs(currentBalance))} شيكل ${balanceLabel}`;
     }
 
     return message;
